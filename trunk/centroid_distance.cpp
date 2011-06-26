@@ -21,3 +21,4 @@ double CentroidDistance::mergedDistance(const Cluster& leftFromCluster, const Cl
 	}
 	return sqrt(res);
 }
+

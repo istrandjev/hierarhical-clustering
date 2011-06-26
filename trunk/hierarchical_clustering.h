@@ -3,7 +3,6 @@
 
 #include "distance.h"
 #include "cluster.h"
-#include "closest_cluster.h"
 #include "binary_heap.h"
 
 #include <string>

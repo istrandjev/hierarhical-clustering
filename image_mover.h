@@ -17,3 +17,4 @@ private:
 };
 #endif  // IMAGE_MOVER_H_
 
+

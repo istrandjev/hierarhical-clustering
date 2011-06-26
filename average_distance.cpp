@@ -11,3 +11,4 @@ double AverageDistance::mergedDistance(const Cluster& leftFromCluster, const Clu
 	res /= double(leftFromCluster.getNumPoints() + rightFromCluster.getNumPoints());
 	return res;
 }
+

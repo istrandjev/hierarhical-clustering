@@ -182,10 +182,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\closest_cluster.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\cluster.cpp"
 				>
 			</File>
@@ -244,11 +240,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\centroid_distance.h"
+				RelativePath=".\binary_heap.h"
 				>
 			</File>
 			<File
-				RelativePath=".\closest_cluster.h"
+				RelativePath=".\centroid_distance.h"
 				>
 			</File>
 			<File

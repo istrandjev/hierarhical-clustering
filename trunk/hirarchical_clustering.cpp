@@ -1,7 +1,6 @@
 #include "hierarchical_clustering.h"
 #include "distance.h"
 #include "cluster.h"
-#include "closest_cluster.h"
 #include "constants.h"
 
 #include <iostream>

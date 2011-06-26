@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -20,11 +21,15 @@ public class SettingsConfigurator extends JFrame {
 	private static String zeroHandle[];
 	private String inputFile;
 	private String remapFile;
+	private String classifiedFile;
 	private String distance;
 	private String zero;
-	JButton input = new JButton("No file selected");
-	JButton remap = new JButton("No file selected");
+	private JButton input = new JButton("No file selected");
+	private JButton remap = new JButton("No file selected");
+	private JButton classified = new JButton("No file selected");
+	private boolean supervised = false;
 	private JTextField error = new JTextField();
+	private JTextField class_file = new JTextField("Select file:");
 	public SettingsConfigurator() {
 		JPanel p = new JPanel();
 		
@@ -45,7 +50,7 @@ public class SettingsConfigurator extends JFrame {
 		JButton start = new JButton("execute");
 		start.addActionListener(new SaveSettings());
 		Container cp = getContentPane();
-		GridLayout gl =  new GridLayout(5, 2);
+		GridLayout gl =  new GridLayout(7, 2);
 		gl.setHgap(40);
 		
 		JTextField label1 = new JTextField();
@@ -64,6 +69,10 @@ public class SettingsConfigurator extends JFrame {
 		label4.setText("Select zero handling:");
 		label4.setEditable(false);
 		
+		JCheckBox cb = new JCheckBox("Supervised?", false);
+		cb.addActionListener(new SupervisedListener());
+		classified.setVisible(false);
+		class_file.setVisible(false);
 		p.setLayout(gl);
 		p.add(label1);
 		p.add(label2);
@@ -73,6 +82,15 @@ public class SettingsConfigurator extends JFrame {
 		p.add(label4);
 		p.add(jc);
 		p.add(jc2);
+		p.add(cb);
+		JTextField tf = new JTextField();
+		tf.setVisible(false);
+		class_file.setEditable(false);
+		class_file.setHorizontalAlignment(JTextField.RIGHT);
+		classified.addActionListener(new SupervisedFileSelect());
+		p.add(tf);
+		p.add(class_file);
+		p.add(classified);
 		p.add(start);
 		p.add(error);
 		cp.add(p);
@@ -114,7 +132,6 @@ public class SettingsConfigurator extends JFrame {
 	class RemapListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser c = new JFileChooser();
-			// Demonstrate "Save" dialog:
 			if (inputFile != null) {
 				c.setSelectedFile(new File(inputFile));
 			} else {
@@ -145,12 +162,20 @@ public class SettingsConfigurator extends JFrame {
 				error.setVisible(true);
 				return;
 			}
+			if (supervised == true && classifiedFile == null) {
+				error.setText("Please select a file with classification");
+				error.setVisible(true);
+				return;
+			}
 			try {
 				settings = new FileWriter("settings.conf");
 				settings.write(inputFile + "\n");
 				settings.write(remapFile + "\n");
 				settings.write(distance + "\n");
 				settings.write(zero + "\n");
+				if (supervised) {
+					settings.write(classifiedFile + "\n");
+				}
 				settings.close();
 				System.exit(NORMAL);
 			} catch (IOException e1) {
@@ -163,6 +188,41 @@ public class SettingsConfigurator extends JFrame {
 
 	}
 
+	class SupervisedListener implements  ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if (((JCheckBox) e.getSource()).isSelected()) {
+				supervised = true;
+				classified.setVisible(true);
+				class_file.setVisible(true);
+			} else {
+				supervised = false;
+				classifiedFile = null;
+				classified.setVisible(false);
+				class_file.setVisible(false);
+			}
+		}
+		
+	}
+	
+	class SupervisedFileSelect implements  ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			JFileChooser c = new JFileChooser();
+			int rVal = c.showOpenDialog(SettingsConfigurator.this);
+
+			if (rVal == JFileChooser.APPROVE_OPTION) {
+				classifiedFile = c.getSelectedFile().toString();
+				classified.setText(c.getSelectedFile().getName() + ": " + c.getSelectedFile().getAbsolutePath());
+			}
+			if (rVal == JFileChooser.CANCEL_OPTION) {
+				// Do nothing
+			}
+		}
+		
+	}
 	public static void main(String[] args) {
 		distances = args[0].split(",");
 		zeroHandle = args[1].split(",");

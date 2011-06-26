@@ -198,7 +198,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\configuration_manager.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\distance.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\distance_factory.cpp"
 				>
 			</File>
 			<File
@@ -260,11 +268,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\configuration_manager.h"
+				>
+			</File>
+			<File
 				RelativePath=".\constants.h"
 				>
 			</File>
 			<File
 				RelativePath=".\distance.h"
+				>
+			</File>
+			<File
+				RelativePath=".\distance_factory.h"
 				>
 			</File>
 			<File

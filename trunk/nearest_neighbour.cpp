@@ -12,3 +12,8 @@ double NearestNeighbour::mergedDistance(const Cluster& leftFromCluster, const Cl
 	return min(hierarchicalClustering.dists[leftFromCluster.getMinimalPointIndex()][toCluster.getMinimalPointIndex()], 
 		hierarchicalClustering.dists[rightFromCluster.getMinimalPointIndex()][toCluster.getMinimalPointIndex()]);
 }
+
+
+std::string NearestNeighbour::getName() const {
+	return "nearest_neighbour";
+}

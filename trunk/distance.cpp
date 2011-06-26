@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-double Distance::initialDistance(double p1[], double p2[], int numDimensions)
+double Distance::initialDistance(double p1[], double p2[], int numDimensions) const
 {
 	double sum = 0;
 	for(int i = 0; i < numDimensions; i++)

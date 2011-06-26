@@ -214,6 +214,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\glfont.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\hirarchical_clustering.cpp"
 				>
 			</File>
@@ -285,6 +289,10 @@
 			</File>
 			<File
 				RelativePath=".\furthest_neighbour.h"
+				>
+			</File>
+			<File
+				RelativePath=".\glfont.h"
 				>
 			</File>
 			<File

@@ -10,7 +10,7 @@
 #include <fstream>
 using namespace std;
 
-HierarchicalClustering::HierarchicalClustering(const string& dataFileName, Distance* distance)
+HierarchicalClustering::HierarchicalClustering(const string& dataFileName, const Distance* distance)
 {
 	ifstream in(dataFileName.c_str());
 	in >> numDimensions >> numPoints;
@@ -88,7 +88,7 @@ HierarchicalClustering::~HierarchicalClustering()
 	delete [] correspondingClusers;
 }
 
-void HierarchicalClustering::calculateHierarchy(Distance* distance)
+void HierarchicalClustering::calculateHierarchy(const Distance* distance)
 {
 	for(int step = 1; step < numPoints; step++)
 	{

@@ -25,10 +25,10 @@ public:
 	set<int> currentClusters;
 	vector<Cluster*> allClusters;
 
-	HierarchicalClustering(const string& dataFileName, Distance* distance);
+	HierarchicalClustering(const string& dataFileName, const Distance* distance);
 	~HierarchicalClustering();
 
-	void calculateHierarchy(Distance* distance);
+	void calculateHierarchy(const Distance* distance);
 	double getTotalFMeasure(const vector<vector<int> >& classes);
 private:
 	double getClassFMeasure(int class_index, int class_size, const vector<int>& actual_classes);

@@ -22,3 +22,6 @@ double CentroidDistance::mergedDistance(const Cluster& leftFromCluster, const Cl
 	return sqrt(res);
 }
 
+std::string CentroidDistance::getName() const {
+	return "centroid_distance";
+}

@@ -9,3 +9,7 @@ double FurthestNeighbour::mergedDistance(const Cluster& leftFromCluster, const C
 	return max(hierarchicalClustering.dists[leftFromCluster.getMinimalPointIndex()][toCluster.getMinimalPointIndex()], 
 		hierarchicalClustering.dists[rightFromCluster.getMinimalPointIndex()][toCluster.getMinimalPointIndex()]);
 }
+
+std::string FurthestNeighbour::getName() const {
+	return "furthest_neighbour";
+}

@@ -1,15 +1,17 @@
 #define _CRT_SECURE_NO_DEPRECATE
 
-#include "utils.h"
-#include "random.h"
 #include "cluster_vis.h"
+#include "cofenetic.h"
+#include "configuration_manager.h"
 #include "hierarchical_clustering.h"
 #include "image_mover.h"
-#include "all_distances.h"
+#include "random.h"
 #include "shape_vis.h"
-#include "cofenetic.h"
-#include <cmath>
+#include "utils.h"
+
 #include <algorithm>
+#include <cmath>
+
 #define NAME_SIZE 10
 #define REC_SIZE 6
 using namespace std;
@@ -22,12 +24,10 @@ typedef long double ld;
 const ld epsylon = 1e-9;
 
 void doMain() {
-	NearestNeighbour nn;
-	FurthestNeighbour fn;
-	CentroidDistance cd;
-	AverageDistance ad;
-	Distance *distance = &fn;
-	HierarchicalClustering hc("lecture.txt", distance);
+	ConfigurationManager cm;
+	cm.doConfiguration();
+	const Distance* distance = cm.getDistance();
+	HierarchicalClustering hc(cm.getInputFileName(), distance);
 	hc.calculateHierarchy(distance);
 	ClusterVis cluster_vis(&hc);
 	ImageMover image_mover;
@@ -119,7 +119,6 @@ int WINAPI WinMain(	HINSTANCE	hInstance,				// Instance
 			int		nCmdShow)				// Window Show State
 {
 	freopen("error.out","w",stderr);
-	MSG	msg;								// Windows Message Structure
 	// Create Our OpenGL Window
 	GlVisualizer::Initialize();
 	if (!GlVisualizer::CreateGLWindow(L"Hierarchical clustering",1280,800,16))

@@ -9,8 +9,9 @@ class HierarchicalClustering;
 class CentroidDistance : public Distance
 {
 public:
-	double mergedDistance(const Cluster& leftFromCluster, const Cluster& rightFromCluster, 
+	virtual double mergedDistance(const Cluster& leftFromCluster, const Cluster& rightFromCluster, 
 		const Cluster& toCluster, HierarchicalClustering& hierarchicalClustering) const;
+	virtual std::string getName() const;
 };
 
 #endif  // CENTROID_DISTANCE_H_

@@ -9,7 +9,9 @@ class HierarchicalClustering;
 class NearestNeighbour: public Distance
 {
 public:
-	double mergedDistance(const Cluster& leftFromCluster, const Cluster& rightFromCluster, 
+	virtual double mergedDistance(const Cluster& leftFromCluster, const Cluster& rightFromCluster, 
 		const Cluster& toCluster, HierarchicalClustering& hierarchicalClustering) const;
+
+	virtual std::string getName() const;
 };
 #endif //NEAREST_NEIGHBOUR_HPP

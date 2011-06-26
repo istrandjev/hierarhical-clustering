@@ -71,8 +71,8 @@ public class SettingsConfigurator extends JFrame {
 		p.add(remap);
 		p.add(label3);
 		p.add(label4);
-		p.add(jc2);
 		p.add(jc);
+		p.add(jc2);
 		p.add(start);
 		p.add(error);
 		cp.add(p);

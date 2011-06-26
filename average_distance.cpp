@@ -12,3 +12,6 @@ double AverageDistance::mergedDistance(const Cluster& leftFromCluster, const Clu
 	return res;
 }
 
+std::string AverageDistance::getName() const {
+	return "average_distance";
+}

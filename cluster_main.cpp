@@ -24,6 +24,7 @@ typedef long double ld;
 const ld epsylon = 1e-9;
 
 void doMain() {
+
 	ConfigurationManager cm;
 	cm.doConfiguration();
 	const Distance* distance = cm.getDistance();
@@ -31,29 +32,8 @@ void doMain() {
 	hc.calculateHierarchy(distance);
 	ClusterVis cluster_vis(&hc);
 	ImageMover image_mover;
-	{
-		FILE *out = fopen("solution.out","w");
-		fprintf(out,"%d\n", hc.numPoints);
-		for (int i=0;i<hc.numPoints; ++i) {
-			fprintf(out,"%d: ", i);
-			for (int j=0;j<hc.numPoints;++j){
-				fprintf(out,"(");
-				for (int k=0;k<hc.numDimensions; ++k){
-					fprintf(out, "%.1llf", hc.points[j][k]);
-					if (k + 1 != hc.numDimensions) {
-						fprintf(out, ", ");
-					}
-				}
-				fprintf(out,")=%d", hc.clusterPoints[i][j]);
-			}
-			fprintf(out, "\n");
-		}
-		if(true)
-		{
-			fprintf(out, "Cofenetic metric: %.8lf\n", cppc(hc));
-		}
-		fclose(out);
-	}
+	CofeneticMeasure cofeneticMeasure;
+
 	if (false) {
 		vector<vector<int> > actual;
 		FILE *in = fopen("classes.txt", "r");
@@ -76,6 +56,7 @@ void doMain() {
 	while (true) {
 		GlVisualizer::clear_output();
 		image_mover.DoMove();
+		cluster_vis.PrintStats(cofeneticMeasure);
 		cluster_vis.Visualize(tp);
 		GlVisualizer::animation_pause(true);
 		if (GlVisualizer::keys['Z']) {

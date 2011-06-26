@@ -2,6 +2,7 @@
 #define CLUSTER_VIS_H_
 
 #include "hierarchical_clustering.h"
+#include "cofenetic.h"
 
 class Shape;
 
@@ -10,6 +11,7 @@ public:
 	ClusterVis(const HierarchicalClustering* _hc);
 
 	void Visualize(int set_type) const;
+	void PrintStats(const CofeneticMeasure& cofeneticMeasure) const;
 	void IncrementClusterLevel();
 	void DecrementClusterLevel();
 	void IncrementRadius();
@@ -18,6 +20,7 @@ public:
 private:
 	double Dist(double* pt1, double* pt2, int nd) const;
 	Shape GetShape(double* pt, int type_code) const;
+	void printText(const string& str)const;
 
 private:
 	const HierarchicalClustering* hc;	

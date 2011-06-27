@@ -16,4 +16,4 @@ However for both scenarios you will need to firstly set up the project on your m
 
 = Introduction to the field =
 
-We have also planned to provide you with basic notion of the field of interest in this wiki. Maybe the best place to start is from [AglomerativeHierarchicalClustering Aglomerative hierarchical clustering] page. It should re-link to all notions and terms you will need to understand the field of interest.
+We have also planned to provide you with basic notion of the field of interest in this wiki. Maybe the best place to start is from [AglomerativeHierarchicalClustering aglomerative hierarchical clustering] page. It should re-link to all notions and terms you will need to understand the field of interest.

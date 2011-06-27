@@ -74,5 +74,6 @@ Also:
  * You can shrink the figures representing the points with 'b'
  * You can switch to the next step, if such exist, with 'z'
  * You can switch back to the previous step, if such exist, with 'x'
+ * You can stop the visualization and thus terminate the program with 'esc'
 
 In each step there is a text field in which the values of all applicable quality measures are shown, together with the step number.

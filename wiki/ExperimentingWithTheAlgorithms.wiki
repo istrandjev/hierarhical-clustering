@@ -1,0 +1,36 @@
+#summary Describes how can you use the project for conducting experiments.
+#labels Featured
+
+= Introduction =
+
+The code we have developed is intended to be very intuitive and easy to use especially from end-user point of view. However we provide this page to explain briefly how you should interpret the results and how to tune in the parameters of the algorithm as you wish them to be.
+
+
+= Prerequisite =
+
+Of course, before you start experimenting you need to set up the project. If you have not yet done so please refer to [SetupTheProject Setup the project] page.
+
+= Input form =
+
+When you launch the project you are presented with user friendly form that should allow you to switch all the parameters of the algorithms to the values you desire. The following sections will describe the semantics of everyone of them.
+
+== Data input files ==
+
+The data input files provide the elements that are to be clustered. There are couple of data input files: one of them describes the "real" elements along with all their attributes and the other one is the so-called remapped input. In the remapped file the elements are expected to be represented with at most 3 continuous attributes. The remapped file data is used in the visualization - every element is represented with a point with coordinates taken from the remapped file. When you select the real data input file the remapped file is set by default to the same file to save double browsing in case of 2 or 3 dimensional input data. 
+
+Both files are text files and are in the same format:
+<num_dimensions> <num_points>
+num_points lines of num_dimensions doubles describing the next element.
+
+For example if you wish to use as an input a unit square in 2D the input will be like:
+{{{
+2 4
+0.0 0.0
+0.0 1.0
+1.0 1.0
+1.0 0.0
+}}} 
+
+== Distance metric ==
+
+In the input form there is a drop down from which you can choose the distance metric to use. We have implemented the four described in [AglomerativeHierarchicalClustering#Metrics this page], but we allow for implementation of user metrics. The semantics of this field is obvious.

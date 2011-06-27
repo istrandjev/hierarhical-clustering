@@ -65,7 +65,10 @@ You can observe the state of the current step (the initial step is zeroth, i.e. 
  * You can rotate the image with the mouse
  * You can move inwards (direction of z^+^) with 'q'
  * You can move outwards (direction of z^-^) with 'a'
- * You can rotate the image via 's' or 'w'
+ * You can rotate the image around x axis via 's' or 'w'
+ * You can rotate the image around y axis via 'e' or 'd'
+ * You can rotate the image around z axis via 'r' or 'f'
+ * The arrows ←, →, ↓, ↑ execute the expected movements in x and y directions
  * You can enlarge the figures representing the points with 'v'
  * You can make smaller the figures representing the points with 'b'
 

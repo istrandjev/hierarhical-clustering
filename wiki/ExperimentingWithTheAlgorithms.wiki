@@ -36,3 +36,9 @@ For example if you wish to use as an input a unit square in 2D the input will be
 == Distance metric ==
 
 In the input form there is a drop down from which you can choose the distance metric to use. We have implemented the four described in [AglomerativeHierarchicalClustering#Metrics this page], but we allow for implementation of user metrics. The semantics of this field is obvious.
+
+== Classification available switch ==
+
+If set this switch states that there is an additional information available for the input data presented, i.e. the classification of the input elements is known and the data is used for algorithm verification. This can be used by different algorithm like the ""F-metric measure" so that they will provide additional data during the execution of the algorithm. 
+
+When you check the checkbox additional button will appear in which you should provide the data containing the classification information.

@@ -89,7 +89,11 @@ void ClusterVis::PrintStats(const CopheneticMeasure& copheneticMeasure, const FM
 	text.setf(ios::fixed,ios::floatfield);
 	text.precision(5);
 	if(clusterLevel > numPoints / 30 && clusterLevel > 1) {
-		text << " cppc: " << copheneticMeasure.getCppc(*hc, clusterLevel) << "\n";
+		double val = copheneticMeasure.getCppc(*hc, clusterLevel);
+		if(val > -1.5)
+			text << " cppc: " << val << "\n";
+		else
+			text << " cppc: " << " Not available" << "\n";
 	} else {
 		text << " cppc: " << " Not available" << "\n";
 	}

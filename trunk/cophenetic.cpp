@@ -1,4 +1,5 @@
 #include "cophenetic.h"
+#include "constants.h"
 #include "hierarchical_clustering.h"
 
 #include <cmath>
@@ -55,6 +56,7 @@ double CopheneticMeasure::getCppc(const HierarchicalClustering& hierarchicalClus
 	double realDistanceAvg = 0.0;
 	double copheneticDistAvg = 0.0;
 	int numDists = 0;
+	double maxm = -INFINITY, minm = INFINITY;
 	for(int i = 0; i < n; i++)
 	{
 		for(int j = i + 1; j < n; j++)
@@ -62,6 +64,8 @@ double CopheneticMeasure::getCppc(const HierarchicalClustering& hierarchicalClus
 			copheneticDistances[i][j] = copheneticDistance(hierarchicalClustering, i, j, vizStep);
 			if(copheneticDistances[i][j] < 0)
 				continue;
+			maxm = max(maxm, copheneticDistances[i][j]);
+			minm = min(minm, copheneticDistances[i][j]);
 			copheneticDistAvg += copheneticDistances[i][j];
 
 			realDistances[i][j] = realDistance(hierarchicalClustering.points[i],
@@ -71,6 +75,9 @@ double CopheneticMeasure::getCppc(const HierarchicalClustering& hierarchicalClus
 			numDists++;
 		}
 	}
+
+	if(fabs(maxm - minm) < EPSYLON)
+		return -4;
 	realDistanceAvg /= (double)numDists; 
 	copheneticDistAvg /= (double)numDists; 
 

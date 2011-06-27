@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_DEPRECATE
 
+#include "f_measure_calculator.h"
 #include "visualization/cluster_vis.h"
 #include "visualization/shape_vis.h"
 #include "visualization/utils.h"
@@ -7,7 +8,7 @@
 #include "cophenetic.h"
 #include "configuration_manager.h"
 #include "hierarchical_clustering.h"
-#include "random.h"
+
 
 
 #include <algorithm>
@@ -27,38 +28,24 @@ const ld epsylon = 1e-9;
 void doMain() {
 
 	ConfigurationManager cm;
-	if(!cm.doConfiguration())
+	if(!cm.doConfiguration()) {
 		return;
+	}
 	const Distance* distance = cm.getDistance();
 	HierarchicalClustering hc(cm.getInputFileName(), distance);
 	hc.calculateHierarchy(distance);
 	ClusterVis cluster_vis(&hc, cm.getRemapFileName());
 	ImageMover image_mover;
 	CopheneticMeasure copheneticMeasure;
-
-	if (false) {
-		vector<vector<int> > actual;
-		FILE *in = fopen("classes.txt", "r");
-		int n;
-		fscanf(in,"%d", &n);
-		actual.resize(n);
-		for (int i=0;i<n;++i){
-			int m;
-			fscanf(in,"%d", &m);
-			actual[i].resize(m);
-			for (int j=0;j<m;++j){
-				fscanf(in, "%d", &actual[i][j]);
-			}
-		}
-		fclose(in);
-		FILE *out = fopen("compare.out","a");
-		fprintf(out, "%.7lf\n", hc.getTotalFMeasure(actual));
+	FMeasureCalculator* fmc = NULL;
+	if (cm.isSupervised()) {
+		fmc = new FMeasureCalculator(&hc, cm.getClassifiedFileName());
 	}
 	int tp = 0;
 	while (true) {
 		GlVisualizer::clear_output();
 		image_mover.DoMove();
-		cluster_vis.PrintStats(copheneticMeasure);
+		cluster_vis.PrintStats(copheneticMeasure, fmc);
 		cluster_vis.Visualize(tp);
 		GlVisualizer::animation_pause(true);
 		if (GlVisualizer::keys['Z']) {
@@ -82,6 +69,9 @@ void doMain() {
 		if (GlVisualizer::keys['M']) {
 			tp = (tp+7)%8;
 		}
+	}
+	if (fmc != NULL) {
+		delete fmc;
 	}
 }
 
@@ -109,11 +99,8 @@ int WINAPI WinMain(	HINSTANCE	hInstance,				// Instance
 		return 0;							// Quit If Window Was Not Created
 	}
 	WCHAR st[40];
-	const ui number = 10;
 	GetDlgItemText(NULL, 0,st, 40);
-	//while(true){
 	doMain();
-	//}
 	// Shutdown
 	GlVisualizer::KillGLWindow();								// Kill The Window
 	return 0;							// Exit The Program

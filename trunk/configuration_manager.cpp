@@ -36,7 +36,6 @@ void ConfigurationManager::incrementRunId(std::string previosRunId)const {
 
 bool ConfigurationManager::doConfiguration() {
 	std::string run_id = getRunIdFromFile();
-
 	std::vector<const Distance*> distances = DistanceFactory::getAllDistances();
 	std::string distance_names = "";
 	for (size_t index = 0; index < distances.size();++index) {
@@ -53,11 +52,13 @@ bool ConfigurationManager::doConfiguration() {
 	if (!settings) {
 		throw new std::exception("Could not open the configuration file");
 	}
+	supervised = false;
+
 	std::string distance_name;
 	std::string zero_handler_name;
+
 	std::string returned_run_id;
 	std::getline(settings, returned_run_id);
-
 	if(returned_run_id != run_id)
 		return false;
 
@@ -66,8 +67,12 @@ bool ConfigurationManager::doConfiguration() {
 	std::getline(settings, distance_name);
 	// TODO(istrandjev): use this value.
 	std::getline(settings, zero_handler_name);
-	distance = DistanceFactory::getDistanceByName(distance_name);
 
+	std::getline(settings, classifiedFileName);
+	if (classifiedFileName.size() > 0) {
+		supervised = true;
+	}
+	distance = DistanceFactory::getDistanceByName(distance_name);
 	incrementRunId(run_id);
 	return true;
 }
@@ -79,4 +84,15 @@ const std::string& ConfigurationManager::getRemapFileName() const {
 }
 const Distance* ConfigurationManager::getDistance() const {
 	return distance;
+}
+
+bool ConfigurationManager::isSupervised() const {
+	return supervised;
+}
+
+std::string ConfigurationManager::getClassifiedFileName() const {
+	if (!isSupervised()) {
+		throw new std::exception("Can not get classified file name when not supervised");
+	}
+	return classifiedFileName;
 }

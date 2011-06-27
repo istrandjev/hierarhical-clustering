@@ -1,6 +1,8 @@
 #summary Page explaining how to build on the provided code.
 #labels Phase-Implementation
 
+<wiki:toc max_depth="2" />
+
 = Introduction =
 
 No use of easily extensible code if one does not know how to make the extensions. This page will describe in more detail the details of implementation you should be aware of when implementing your own extensions. After that every extension will be discussed on its own.
@@ -30,3 +32,15 @@ This class and its deriving ones define the logic implementing different [Aglome
  * *_mergedDistance_* - this method calculates the new distance between newly formed cluster and other one. In order to make this method serve all possible usages it receives 4 parameters: the two clusters _leftFromCluster_ and _rightFromCluster_ that are merged to form the new cluster, _toCluster_ - the cluster to which we want to calculate the distance form the newly formed cluster and the ubiquitous `HierarchicalClustering` instance. 
 
 If you wish to understand the logic of this class it is probably best to refer to some already existing implementation.
+
+= Extending the existing code =
+
+In this section we will describe the ways in which you can extend the existing code.
+
+== Adding a distance metric ==
+Probably the place where experimenting with different approaches is most worthwhile is the implementation of distance metrics. The introduction of new distance metric in the system is fairly simple:
+ # You need to implement new class extending the base Distance and define the derived methods in the desired manner. The name is important - it should be unique for the system and, beware, it is the one that will be used in the input form [ExperimentingWithTheAlgorithms#Distance_metric distance metric combo box].
+ # Add the header of your metric in _all_distances.h_
+ # After that just modify _distance_factory.cpp_ adding `distances.push_back(new YourDistance());` to its *_InitDistances_* method body, where _YourDistance_ is the class of your newly implemented metric.
+
+That's it. Now your metric will appear in the input form and you will be able to conduct tests with it.

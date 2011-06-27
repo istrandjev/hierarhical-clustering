@@ -10,7 +10,7 @@ This project is small, but requires some tools in order to be able to run on loc
 
 In order to be able to run the project you require several tools.
 
-== Subsversion ==
+== Subversion ==
 
 You will require subversion in order to be able to checkout the code from this code. You can download command-line subversion from [http://www.sliksvn.com/en/download here] or even use [http://tortoisesvn.tigris.org/ Tortoise Svn] which provides a bit more user friendly interface for manipulation from the GUI of the OS. Each of this two places should describe the way to use the corresponding tools well enough. 
 

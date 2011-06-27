@@ -25,12 +25,26 @@ typedef long long ll;
 typedef long double ld;
 const ld epsylon = 1e-9;
 
+void intiailizeGraphics() {
+	// Create Our OpenGL Window
+	GlVisualizer::Initialize();
+	if (!GlVisualizer::CreateGLWindow(L"Hierarchical clustering",1280,800,16))
+	{
+		exit(0);							// Quit If Window Was Not Created
+	}
+	WCHAR st[40];
+	GetDlgItemText(NULL, 0,st, 40);
+}
+
 void doMain() {
 
 	ConfigurationManager cm;
 	if(!cm.doConfiguration()) {
 		return;
 	}
+
+	intiailizeGraphics();
+
 	const Distance* distance = cm.getDistance();
 	HierarchicalClustering hc(cm.getInputFileName(), distance);
 	hc.calculateHierarchy(distance);
@@ -92,14 +106,7 @@ int WINAPI WinMain(	HINSTANCE	hInstance,				// Instance
 			int		nCmdShow)				// Window Show State
 {
 	freopen("error.out","w",stderr);
-	// Create Our OpenGL Window
-	GlVisualizer::Initialize();
-	if (!GlVisualizer::CreateGLWindow(L"Hierarchical clustering",1280,800,16))
-	{
-		return 0;							// Quit If Window Was Not Created
-	}
-	WCHAR st[40];
-	GetDlgItemText(NULL, 0,st, 40);
+
 	doMain();
 	// Shutdown
 	GlVisualizer::KillGLWindow();								// Kill The Window

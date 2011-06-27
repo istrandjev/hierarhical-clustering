@@ -30,7 +30,7 @@ This section will describe the most common metrics used to compute the distance 
 
 The single link distance between two clusters C1 and C2 is computed as 
 {{{
-min dist(A, b) { A ͼ C1, B ͼ C2}
+min dist(A, b) { A in C1, B in C2}
 }}}
 Where dist(A, B) denotes Euclidian distance between two points.
 
@@ -41,7 +41,7 @@ The formal definition given here seems to be applicable only for elements with a
 == Complete link == 
 The complete link distance between two clusters C1 and C2 is computed as 
 {{{
-max dist(A, b) { A ͼ C1, B ͼ C2}
+max dist(A, b) { A in C1, B in C2}
 }}}
 Where dist(A, B) denotes Euclidian distance between two points.
 
@@ -52,7 +52,7 @@ The formal definition given here seems to be applicable only for elements with a
 == Average distance == 
 The average distance between two clusters C1 and C2 is in fact the average of the Euclidian distance:
 {{{
-(1 / (n1 * n2)) * sum(dist(A, b) { A ͼ C1, B ͼ C2})
+(1 / (n1 * n2)) * sum(dist(A, b) { A in C1, B in C2})
 }}}
 
 Where dist(A, B) denotes Euclidian distance between two points, n1 is the number of elements in C1 and n2 is the number of elements in C2.

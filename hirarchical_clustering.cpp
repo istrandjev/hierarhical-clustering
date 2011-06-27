@@ -1,5 +1,5 @@
 #include "hierarchical_clustering.h"
-#include "distance.h"
+#include "distances/distance.h"
 #include "cluster.h"
 #include "constants.h"
 

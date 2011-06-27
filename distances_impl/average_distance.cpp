@@ -1,5 +1,5 @@
-#include "average_distance.h"
-#include "hierarchical_clustering.h"
+#include "../distances/average_distance.h"
+#include "../hierarchical_clustering.h"
 
 double AverageDistance::mergedDistance(const Cluster& leftFromCluster, const Cluster& rightFromCluster, 
 	const Cluster& toCluster, HierarchicalClustering& hierarchicalClustering) const

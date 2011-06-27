@@ -1,5 +1,5 @@
 #include "configuration_manager.h"
-#include "distance_factory.h"
+#include "distances/distance_factory.h"
 
 #include <fstream>
 #include <string>

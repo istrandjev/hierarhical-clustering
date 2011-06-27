@@ -170,15 +170,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\average_distance.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\binary_heap.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\centroid_distance.cpp"
 				>
 			</File>
 			<File
@@ -190,14 +182,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\cluster_vis.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\complete_link.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\configuration_manager.cpp"
 				>
 			</File>
@@ -206,37 +190,61 @@
 				>
 			</File>
 			<File
-				RelativePath=".\distance.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\distance_factory.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\glfont.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\hirarchical_clustering.cpp"
 				>
 			</File>
-			<File
-				RelativePath=".\image_mover.cpp"
+			<Filter
+				Name="visualization"
 				>
-			</File>
-			<File
-				RelativePath=".\shape_vis.cpp"
+				<File
+					RelativePath=".\visualization\cluster_vis.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\visualization\glfont.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\visualization\image_mover.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\visualization\shape_vis.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\visualization\utils.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="distances_impl"
 				>
-			</File>
-			<File
-				RelativePath=".\single_link.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\utils.cpp"
-				>
-			</File>
+				<File
+					RelativePath=".\distances_impl\average_distance.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\distances_impl\centroid_distance.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\distances_impl\complete_link.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\distances_impl\distance.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\distances_impl\distance_factory.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\distances_impl\single_link.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -244,31 +252,11 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\all_distances.h"
-				>
-			</File>
-			<File
-				RelativePath=".\average_distance.h"
-				>
-			</File>
-			<File
 				RelativePath=".\binary_heap.h"
 				>
 			</File>
 			<File
-				RelativePath=".\centroid_distance.h"
-				>
-			</File>
-			<File
 				RelativePath=".\cluster.h"
-				>
-			</File>
-			<File
-				RelativePath=".\cluster_vis.h"
-				>
-			</File>
-			<File
-				RelativePath=".\complete_link.h"
 				>
 			</File>
 			<File
@@ -284,41 +272,69 @@
 				>
 			</File>
 			<File
-				RelativePath=".\distance.h"
-				>
-			</File>
-			<File
-				RelativePath=".\distance_factory.h"
-				>
-			</File>
-			<File
-				RelativePath=".\glfont.h"
-				>
-			</File>
-			<File
 				RelativePath=".\hierarchical_clustering.h"
-				>
-			</File>
-			<File
-				RelativePath=".\image_mover.h"
 				>
 			</File>
 			<File
 				RelativePath=".\random.h"
 				>
 			</File>
-			<File
-				RelativePath=".\shape_vis.h"
+			<Filter
+				Name="distances"
 				>
-			</File>
-			<File
-				RelativePath=".\single_link.h"
+				<File
+					RelativePath=".\distances\all_distances.h"
+					>
+				</File>
+				<File
+					RelativePath=".\distances\average_distance.h"
+					>
+				</File>
+				<File
+					RelativePath=".\distances\centroid_distance.h"
+					>
+				</File>
+				<File
+					RelativePath=".\distances\complete_link.h"
+					>
+				</File>
+				<File
+					RelativePath=".\distances\distance.h"
+					>
+				</File>
+				<File
+					RelativePath=".\distances\distance_factory.h"
+					>
+				</File>
+				<File
+					RelativePath=".\distances\single_link.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="visualization"
 				>
-			</File>
-			<File
-				RelativePath=".\utils.h"
-				>
-			</File>
+				<File
+					RelativePath=".\visualization\cluster_vis.h"
+					>
+				</File>
+				<File
+					RelativePath=".\visualization\glfont.h"
+					>
+				</File>
+				<File
+					RelativePath=".\visualization\image_mover.h"
+					>
+				</File>
+				<File
+					RelativePath=".\visualization\shape_vis.h"
+					>
+				</File>
+				<File
+					RelativePath=".\visualization\utils.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"

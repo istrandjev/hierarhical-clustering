@@ -35,7 +35,7 @@ void ClusterVis::printText(const string& str)const
 	GLuint textureName;
 	glGenTextures(1, &textureName);
 	PixelPerfectGLFont font;
-	font.Create("glfont.glf", textureName);
+	font.Create("visualization/glfont.glf", textureName);
 
 	stringstream ss;
 	ss << str;

@@ -1,7 +1,7 @@
 #ifndef HIERARCHICAL_CLUSTERING_HPP
 #define HIERARCHICAL_CLUSTERING_HPP
 
-#include "distance.h"
+#include "distances/distance.h"
 #include "cluster.h"
 #include "binary_heap.h"
 

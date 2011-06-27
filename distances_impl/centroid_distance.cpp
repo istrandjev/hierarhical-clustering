@@ -1,8 +1,8 @@
-#include "centroid_distance.h" 
+#include "../distances/centroid_distance.h" 
 
-#include "cluster.h"
-#include "hierarchical_clustering.h"
-#include "constants.h"
+#include "../cluster.h"
+#include "../hierarchical_clustering.h"
+#include "../constants.h"
 
 #include <cmath>
 

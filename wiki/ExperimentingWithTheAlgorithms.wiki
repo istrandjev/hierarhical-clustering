@@ -44,8 +44,8 @@ When you check the checkbox additional button will appear in which you should pr
 {{{
 <number_of_classes>
 for each class:
-<number_of_points>
-[line with space-separated indexes of the elements in the class]
+  <number_of_points>
+  [line with space-separated indexes of the elements in the class]
 }}}
 The indexes of the elements should match the sequence of the elements given in the data input files. The indexes range from 0 to `n - 1`, where n is the number of elements subject to clusterization. Every element should be classified in exactly one class. Thus if you have two clusters of 4 points, an example classification data file is the following:
 {{{

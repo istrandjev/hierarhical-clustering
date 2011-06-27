@@ -1,0 +1,21 @@
+#summary Page explaining the aglomerative hierarchical clustering.
+#labels Phase-Implementation
+
+= Introduction =
+
+As the project is aimed at the implementation of aglomerative hierarchical clustering algorithms it is required to explain what stands behind this term. We will use this page to very briefly introduce you to this approach to the clustering task.
+
+
+= Aglomerative Hierarchical Clustering =
+
+The aglomerative hierarchical clustering is an approach to the clustering task. In it we start with every element of the set of interest represented in its own cluster. After that we perform a sequence of steps that gradually merge clusters. 
+
+The original version of the algorithm merges clusters until we reach the state in which only one containing all the elements is present. However, one can always implement some logic that stops the merging after certain condition is met.
+
+Each step of the merging merges exactly two of the clusters present in the previous step. We choose the couple of clusters to merge based on certain metric of distance between the clusters: we always merge the couple of clusters for which the distance is minimal. If there is more than one such couple arbitrary one is chosen (Note: the way the arbitrary couple is chosen can affect the results of the algorithm in the general case).  
+
+Very important for this algorithm is that we are not interested only in the final result of the algorithm. As already mentioned, this is usually just one cluster. In fact we construct a tree of all the clusters after each step: we merge couple of clusters in a single new one. After that when it comes to performing operations with the constructed clustering we perform them on the whole tree, rather than just on the final element.
+
+As the aglomerative hierarchical clustering algorithms store the whole cluster tree and its construction is not an easy operation (the best algorithms in performance perform in O(n^2 lg n) time, where n is the number of elements subject to clustering), this algorithm is usually combined with faster clustering algorithm that aim to to base aglomeration and reduce the number of subjects.  
+
+The most used metrics for distance between clusters are described in the following section.

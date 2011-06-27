@@ -47,13 +47,13 @@ for each class:
 <number_of_points>
 [line with space-separated indexes of the elements in the class]
 }}}
-The indexes of the elements should match the sequence of the elements given in the data input files. Every element should be classified in exactly one class. Thus if you have two clusters of 4 points, an example classification data file is the following:
+The indexes of the elements should match the sequence of the elements given in the data input files. The indexes range from 0 to `n - 1`, where n is the number of elements subject to clusterization. Every element should be classified in exactly one class. Thus if you have two clusters of 4 points, an example classification data file is the following:
 {{{
 2
 4
-1 3 5 7
+0 2 4 6
 4
-2 4 6 8
+1 3 5 7
 }}}
 
 = Visualization controls =

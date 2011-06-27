@@ -24,7 +24,7 @@ This class is the main class of the implementation of the algorithm. It "does al
 
 == `Cluster` ==
 This class represents all the details needed to handle the different clusters in the system. An important note to make here is that we do not actually store the cluster points in every single cluster. We rather store just the index of the cluster in `HierarchicalClustering`'s *_allClusters_*. After that we are able to restore the cluster points, if needed, from `HirearchicalClustering`'s *_clusterPoints_*. The most important methods of this class are the following:
- * *_getClsuterIdx_()* - returns the index of the cluster in the *_allClusters_* field of the `HirearchicalClustering` instance that created this cluster.
+ * *_getClusterIdx_()* - returns the index of the cluster in the *_allClusters_* field of the `HirearchicalClustering` instance that created this cluster.
  * *_getNumPoints()_* - returns the number of points that this cluster comprises of.
  * *_getDistanceOfCreation()_* - returns the double 'distance of creation' for the cluster. Every cluster that contains more than one point is formed as result of merging two clusters that happened to be the closest with distance _D_ at certain step. The 'distance of creation' for every cluster of more than one point stores this _D_. For the rest the distance of creation is 0. This method is used for example when calculating the [AglomerativeHierarchicalClustering#Cophenetic_correlation cophenetic quality measure] 
 

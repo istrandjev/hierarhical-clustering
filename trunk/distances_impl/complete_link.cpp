@@ -1,7 +1,7 @@
-#include "../distances/complete_link.h"
-#include "../cluster.h"
-#include "../hierarchical_clustering.h"
-#include "../constants.h"
+#include "distances/complete_link.h"
+#include "cluster.h"
+#include "hierarchical_clustering.h"
+#include "constants.h"
 
 double CompleteLink::mergedDistance(const Cluster& leftFromCluster, const Cluster& rightFromCluster, 
 	const Cluster& toCluster, HierarchicalClustering& hierarchicalClustering) const

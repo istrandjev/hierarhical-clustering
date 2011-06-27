@@ -19,3 +19,32 @@ Very important for this algorithm is that we are not interested only in the fina
 As the aglomerative hierarchical clustering algorithms store the whole cluster tree and its construction is not an easy operation (the best algorithms in performance perform in O(n^2 lg n) time, where n is the number of elements subject to clustering), this algorithm is usually combined with faster clustering algorithm that aim to to base aglomeration and reduce the number of subjects.  
 
 The most used metrics for distance between clusters are described in the following section.
+
+= Metrics =
+
+This section will describe the most common metrics used to compute the distance between clusters in the step of finding the two closest clusters in the implementation of the algorithm.
+
+== Single link ==
+
+The single link distance between two clusters C1 and C2 is computed as 
+{{{
+min dist(A, b) { A ͼ C1, B ͼ C2}
+}}}
+Where dist(A, B) denotes Euclidian distance between two points.
+
+In other words we consider the single link distance between the two clusters to be the distance between their two closest elements.
+
+The formal definition given here seems to be applicable only for elements with all their attributes being continuous, but the notion of distance can also be extended for nominal attributes.
+
+== Complete link == 
+The complete link distance between two clusters C1 and C2 is computed as 
+{{{
+max dist(A, b) { A ͼ C1, B ͼ C2}
+}}}
+Where dist(A, B) denotes Euclidian distance between two points.
+
+In other words we consider the complete link distance between the two clusters to be the distance between their two furthest elements.
+
+The formal definition given here seems to be applicable only for elements with all their attributes being continuous, but the notion of distance can also be extended for nominal attributes.
+
+== Average distance == 

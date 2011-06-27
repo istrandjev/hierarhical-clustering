@@ -29,9 +29,7 @@ public:
 	~HierarchicalClustering();
 
 	void calculateHierarchy(const Distance* distance);
-	double getTotalFMeasure(const vector<vector<int> >& classes);
 private:
-	double getClassFMeasure(int class_index, int class_size, const vector<int>& actual_classes);
 	void constructElements();
 };
 

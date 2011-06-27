@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_DEPRECATE
 
 #include "cluster_vis.h"
-#include "cofenetic.h"
+#include "cophenetic.h"
 #include "configuration_manager.h"
 #include "hierarchical_clustering.h"
 #include "image_mover.h"
@@ -32,7 +32,7 @@ void doMain() {
 	hc.calculateHierarchy(distance);
 	ClusterVis cluster_vis(&hc);
 	ImageMover image_mover;
-	CofeneticMeasure cofeneticMeasure;
+	CopheneticMeasure copheneticMeasure;
 
 	if (false) {
 		vector<vector<int> > actual;
@@ -56,7 +56,7 @@ void doMain() {
 	while (true) {
 		GlVisualizer::clear_output();
 		image_mover.DoMove();
-		cluster_vis.PrintStats(cofeneticMeasure);
+		cluster_vis.PrintStats(copheneticMeasure);
 		cluster_vis.Visualize(tp);
 		GlVisualizer::animation_pause(true);
 		if (GlVisualizer::keys['Z']) {

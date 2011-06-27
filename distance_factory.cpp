@@ -7,8 +7,8 @@ bool DistanceFactory::initialized = false;
 
 // static
 void DistanceFactory::InitDistances() {
-	distances.push_back(new NearestNeighbour());
-	distances.push_back(new FurthestNeighbour());
+	distances.push_back(new SingleLink());
+	distances.push_back(new CompleteLink());
 	distances.push_back(new CentroidDistance());
 	distances.push_back(new AverageDistance());
 	initialized = true;

@@ -59,14 +59,14 @@ void ClusterVis::printText(const string& str)const
 	glPopMatrix();
 }
 
-void ClusterVis::PrintStats(const CofeneticMeasure& cofeneticMeasure) const
+void ClusterVis::PrintStats(const CopheneticMeasure& copheneticMeasure) const
 {
 	stringstream text;
 	text << " Step: " << clusterLevel + 1 << "\n";
 	text.setf(ios::fixed,ios::floatfield);
 	text.precision(5);
 	if(clusterLevel > numPoints / 30 && clusterLevel > 1)
-		text << " cppc: " << cofeneticMeasure.getCppc(*hc, clusterLevel) << "\n";
+		text << " cppc: " << copheneticMeasure.getCppc(*hc, clusterLevel) << "\n";
 	else
 		text << " cppc: " << " Not available" << "\n";
 

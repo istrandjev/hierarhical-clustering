@@ -1,8 +1,8 @@
-#include "cofenetic.h"
+#include "cophenetic.h"
 #include "hierarchical_clustering.h"
 
 #include <cmath>
-double CofeneticMeasure::realDistance(double p1[], double p2[], int numDimensions)const
+double CopheneticMeasure::realDistance(double p1[], double p2[], int numDimensions)const
 {
 	double sum = 0;
 	for(int i = 0; i < numDimensions; i++)
@@ -10,7 +10,7 @@ double CofeneticMeasure::realDistance(double p1[], double p2[], int numDimension
 	return sqrt(sum);
 }
 
-double CofeneticMeasure::cofDistance(const HierarchicalClustering& hc, int p1Idx, int p2Idx, int vizStep)const
+double CopheneticMeasure::copheneticDistance(const HierarchicalClustering& hc, int p1Idx, int p2Idx, int vizStep)const
 {
 	int cur = 0;
 
@@ -39,30 +39,30 @@ double CofeneticMeasure::cofDistance(const HierarchicalClustering& hc, int p1Idx
 		return hc.allClusters[hc.clusterPoints[cur][p1Idx]]->getDistanceOfCreation();
 }
 
-double CofeneticMeasure::getCppc(const HierarchicalClustering& hierarchicalClustering, int vizStep)const
+double CopheneticMeasure::getCppc(const HierarchicalClustering& hierarchicalClustering, int vizStep)const
 {
 	double **realDistances;
-	double **cofeneticDistances;
+	double **copheneticDistances;
 	int n = hierarchicalClustering.numPoints;
 	realDistances = new double*[n];
-	cofeneticDistances = new double*[n];
+	copheneticDistances = new double*[n];
 	for(int i = 0; i < n; i++)
 	{
 		realDistances[i] = new double[n];
-		cofeneticDistances[i] = new double[n];
+		copheneticDistances[i] = new double[n];
 	}
 
 	double realDistanceAvg = 0.0;
-	double cofeneticDistAvg = 0.0;
+	double copheneticDistAvg = 0.0;
 	int numDists = 0;
 	for(int i = 0; i < n; i++)
 	{
 		for(int j = i + 1; j < n; j++)
 		{
-			cofeneticDistances[i][j] = cofDistance(hierarchicalClustering, i, j, vizStep);
-			if(cofeneticDistances[i][j] < 0)
+			copheneticDistances[i][j] = copheneticDistance(hierarchicalClustering, i, j, vizStep);
+			if(copheneticDistances[i][j] < 0)
 				continue;
-			cofeneticDistAvg += cofeneticDistances[i][j];
+			copheneticDistAvg += copheneticDistances[i][j];
 
 			realDistances[i][j] = realDistance(hierarchicalClustering.points[i],
 										hierarchicalClustering.points[j], 
@@ -72,7 +72,7 @@ double CofeneticMeasure::getCppc(const HierarchicalClustering& hierarchicalClust
 		}
 	}
 	realDistanceAvg /= (double)numDists; 
-	cofeneticDistAvg /= (double)numDists; 
+	copheneticDistAvg /= (double)numDists; 
 
 	double nom = 0.0;
 	double denSum1 = 0.0;
@@ -81,21 +81,21 @@ double CofeneticMeasure::getCppc(const HierarchicalClustering& hierarchicalClust
 	{
 		for(int j = i + 1; j < n; j++)
 		{
-			if(cofeneticDistances[i][j] < 0)
+			if(copheneticDistances[i][j] < 0)
 				continue;
-			nom += (realDistances[i][j] - realDistanceAvg) * (cofeneticDistances[i][j] - cofeneticDistAvg);
+			nom += (realDistances[i][j] - realDistanceAvg) * (copheneticDistances[i][j] - copheneticDistAvg);
 			denSum1 += (realDistances[i][j] - realDistanceAvg) * (realDistances[i][j] - realDistanceAvg);
-			denSum2 += (cofeneticDistances[i][j] - cofeneticDistAvg) * (cofeneticDistances[i][j] - cofeneticDistAvg);
+			denSum2 += (copheneticDistances[i][j] - copheneticDistAvg) * (copheneticDistances[i][j] - copheneticDistAvg);
 		}
 	}
 
 	for(int i = 0; i < n; i++)
 	{
 		delete [] realDistances[i];
-		delete [] cofeneticDistances[i];
+		delete [] copheneticDistances[i];
 	}
 	delete [] realDistances;
-	delete [] cofeneticDistances;
+	delete [] copheneticDistances;
 
 	double val = nom / sqrt(denSum1 * denSum2);
 	//val *= (double) (2.0 * numDists) / (double)(n * (n - 1));

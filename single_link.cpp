@@ -1,4 +1,4 @@
-#include "nearest_neighbour.h"
+#include "single_link.h"
 #include "cluster.h"
 #include "hierarchical_clustering.h"
 #include "constants.h"
@@ -6,7 +6,7 @@
 #include <set>
 using namespace std;
 
-double NearestNeighbour::mergedDistance(const Cluster& leftFromCluster, const Cluster& rightFromCluster, 
+double SingleLink::mergedDistance(const Cluster& leftFromCluster, const Cluster& rightFromCluster, 
 	const Cluster& toCluster, HierarchicalClustering& hierarchicalClustering) const
 {
 	return min(hierarchicalClustering.dists[leftFromCluster.getMinimalPointIndex()][toCluster.getMinimalPointIndex()], 
@@ -14,6 +14,6 @@ double NearestNeighbour::mergedDistance(const Cluster& leftFromCluster, const Cl
 }
 
 
-std::string NearestNeighbour::getName() const {
-	return "nearest_neighbour";
+std::string SingleLink::getName() const {
+	return "single_link";
 }

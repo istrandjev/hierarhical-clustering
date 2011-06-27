@@ -130,7 +130,7 @@ public class SettingsConfigurator extends JFrame {
 
 	class RemapListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			JFileChooser c = new JFileChooser();
+			JFileChooser c = new JFileChooser(new File("example_data"));
 			if (inputFile != null) {
 				c.setSelectedFile(new File(inputFile));
 			} else {

@@ -32,7 +32,7 @@ void doMain() {
 	const Distance* distance = cm.getDistance();
 	HierarchicalClustering hc(cm.getInputFileName(), distance);
 	hc.calculateHierarchy(distance);
-	ClusterVis cluster_vis(&hc);
+	ClusterVis cluster_vis(&hc, cm.getRemapFileName());
 	ImageMover image_mover;
 	CopheneticMeasure copheneticMeasure;
 

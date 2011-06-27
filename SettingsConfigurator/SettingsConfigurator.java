@@ -98,14 +98,12 @@ public class SettingsConfigurator extends JFrame {
 	}
 
 	class DistanceHandlingChooser implements ActionListener {
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			distance = ((JComboBox) e.getSource()).getSelectedItem().toString();
 		}
 	}
 
 	class ZeroHandlingChooser implements ActionListener {
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			zero = ((JComboBox) e.getSource()).getSelectedItem().toString();
 		}
@@ -113,7 +111,7 @@ public class SettingsConfigurator extends JFrame {
 
 	class InputListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			JFileChooser c = new JFileChooser();
+			JFileChooser c = new JFileChooser(new File("example_data"));
 
 			int rVal = c.showOpenDialog(SettingsConfigurator.this);
 			// jc.show();
@@ -155,7 +153,6 @@ public class SettingsConfigurator extends JFrame {
 
 	class SaveSettings implements ActionListener {
 
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			FileWriter settings;
 			if (inputFile == null || remapFile == null) {
@@ -191,7 +188,6 @@ public class SettingsConfigurator extends JFrame {
 	}
 
 	class SupervisedListener implements  ActionListener {
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			if (((JCheckBox) e.getSource()).isSelected()) {
@@ -209,7 +205,6 @@ public class SettingsConfigurator extends JFrame {
 	}
 	
 	class SupervisedFileSelect implements  ActionListener {
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			JFileChooser c = new JFileChooser();

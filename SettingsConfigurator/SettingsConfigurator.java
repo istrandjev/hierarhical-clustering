@@ -207,7 +207,7 @@ public class SettingsConfigurator extends JFrame {
 	class SupervisedFileSelect implements  ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			JFileChooser c = new JFileChooser();
+			JFileChooser c = new JFileChooser(new File("example_data"));
 			int rVal = c.showOpenDialog(SettingsConfigurator.this);
 
 			if (rVal == JFileChooser.APPROVE_OPTION) {

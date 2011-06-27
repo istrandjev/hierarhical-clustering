@@ -1,5 +1,0 @@
-#summary Different algorithms for distance measure
-
-= Introduction =
-
-This page describes the different algorithms used for distance measure in the clustering algorithm.

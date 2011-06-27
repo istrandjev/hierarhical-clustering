@@ -10,10 +10,9 @@ No use of easily extensible code if one does not know how to make the extensions
 
 This section will introduce you to the most major classes of the implementation.
 
-== HierarchicalClustering ==
+== `HierarchicalClustering` ==
 This class is the main class of the implementation of the algorithm. It "does all the magic" as one will say. Its purpose is to calculate the hierarchical tree of clusters using the chosen [AglomerativeHierarchicalClustering#Metrics distance metric]. Also as the results of this calculations are used by almost all other components of the system we allow direct access to them (public fields). Here is the semantics of the important fields of this class:
 
  * *_numPoints_* - integer that store the number of elements subject to clusterization.
  * *_allClusters_* - this is vector of all the generated clusters. It is guaranteed that with the increasing of the step number the indices of the newly created clusters are greater than those of all the previously created clusters. As expected the total number of formed clusters is `numPoints * 2 - 1` which is also the size of this vector.
  * *_clusterPoints_* - this is two dimensional array of integers. Its purpose is to store the cluster to which each point belongs in each step. Thus `clusterPoints[step1][idx1]` tells the index of *_allClusters_* to which the element with `idx1` belongs after step number `step1` has been executed. As the step indices are between 0 and `numPoints - 1` the dimensions of this array are `numPoints x numPoints`.
-

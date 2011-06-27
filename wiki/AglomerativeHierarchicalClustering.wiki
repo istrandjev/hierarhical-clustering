@@ -69,15 +69,15 @@ The cophenetic correlation measures the correlation between the matrix of real E
 
 The cophenetic distance between two points in the case of aglomerative hierarchical clustering algorithm is defined as follows: the distance between the two clusters that were merged to put the two points in a single new cluster. As we continue the aglomeration until we get to single cluster it is guaranteed that such a step of merging exists for every couple of points. Note that the cophenetic distance depends on the [AglomerativeHierarchicalClustering#Metrics metric] we have chosen to use. 
 
-Now as we have defined the cophenetic distance we can define the matrix of cophenetic distances of the aglomerative hierarchical clustering: this is a matrix whose element cp[[i]][[j]] equals the cophenetic distance between elements with indices i and j.
+Now as we have defined the cophenetic distance we can define the matrix of cophenetic distances of the aglomerative hierarchical clustering: this is a matrix whose element cp`[`i`]``[`j`]` equals the cophenetic distance between elements with indices i and j.
 
-The matrix of distances is defined as follows: d[[i]][[j]] equals the Euclidian distance between elements with indices i and j.
+The matrix of distances is defined as follows: d`[`i`]``[`j`]` equals the Euclidian distance between elements with indices i and j.
 
-Let cp_avg is the average of all the cophenetic distances cp[[i]][[j]] for which j > i. Analogously let d_avg is the average of all real distances d[i][j] for which j > i.
+Let cp_avg is the average of all the cophenetic distances cp`[`i`]``[`j`]` for which j > i. Analogously let d_avg is the average of all real distances d`[`i`]``[`j`]` for which j > i.
 
 The cophenetic correlation of the aglomerative hierarchical clustering is defined as follows:
 
-cppc = sum,,i<j,,((d[[i]][[j]] - d_avg) `*` (cp[[i]][[j]] - cp_avg)) / sqrt(sum,,i<j,,((d[[i]][[j]] - d_avg)^2^) + sum,,i<j,,((cp[[i]][[j]] - cp_avg)^2^))
+cppc = sum,,i<j,,((d`[`i`]``[`j`]` - d_avg) `*` (cp`[`i`]``[`j`]` - cp_avg)) / sqrt(sum,,i<j,,((d`[`i`]``[`j`]` - d_avg)^2^) + sum,,i<j,,((cp`[`i`]``[`j`]` - cp_avg)^2^))
 
 It can be proven that the value of this metric is in absolute value not greater than 1. The closer the values are to 1 the better the algorithm quality is considered to be.
 

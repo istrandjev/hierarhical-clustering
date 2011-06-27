@@ -7,6 +7,9 @@
 
 No use of easily extensible code if one does not know how to make the extensions. This page will describe in more detail the details of implementation you should be aware of when implementing your own extensions. After that every extension will be discussed on its own.
 
+= Prerequisite =
+
+We strongly advice you to experiment a bit with the application as it is, before you delve into adding logic of your own. Refer to [ExperimentingWithTheAlgorithms experimenting with the algorithms] page to see how you can do that.
 
 = Details of the implementation =
 
@@ -41,6 +44,6 @@ In this section we will describe the ways in which you can extend the existing c
 Probably the place where experimenting with different approaches is most worthwhile is the implementation of distance metrics. The introduction of new distance metric in the system is fairly simple:
  # You need to implement new class extending the base Distance and define the derived methods in the desired manner. The name is important - it should be unique for the system and, beware, it is the one that will be used in the input form [ExperimentingWithTheAlgorithms#Distance_metric distance metric combo box].
  # Add the header of your metric in _all_distances.h_
- # After that just modify _distance_factory.cpp_ adding `distances.push_back(new YourDistance());` to its *_InitDistances_* method body, where _YourDistance_ is the class of your newly implemented metric.
+ # After that just modify _distance_factory.cpp_ adding `distances.push_back(new YourDistance());` to its *_`InitDistances`_* method body, where _`YourDistance`_ is the class of your newly implemented metric.
 
 That's it. Now your metric will appear in the input form and you will be able to conduct tests with it.

@@ -71,7 +71,7 @@ You can observe the state of the current step (the initial step is zeroth, i.e. 
 
 Also:
  * You can enlarge the figures representing the points with 'v'
- * You can make smaller the figures representing the points with 'b'
+ * You can shrink the figures representing the points with 'b'
  * You can switch to the next step, if such exist, with 'z'
  * You can switch back to the previous step, if such exist, with 'x'
 

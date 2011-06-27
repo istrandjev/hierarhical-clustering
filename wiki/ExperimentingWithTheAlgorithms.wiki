@@ -34,7 +34,7 @@ For example if you wish to use as an input a unit square in 2D the input will be
 
 == Distance metric ==
 
-In the input form there is a drop down from which you can choose the distance metric to use. We have implemented the four described in [AglomerativeHierarchicalClustering#Metrics this page], but we allow for implementation of user metrics. The semantics of this field is obvious.
+In the input form there is a drop down from which you can choose the distance metric to use. We have implemented the ones described in [AglomerativeHierarchicalClustering#Metrics this page], but we allow for implementation of user metrics. The semantics of this field is obvious.
 
 == Classification available switch ==
 

@@ -1,13 +1,14 @@
 #define _CRT_SECURE_NO_DEPRECATE
 
-#include "cluster_vis.h"
+#include "visualization/cluster_vis.h"
+#include "visualization/shape_vis.h"
+#include "visualization/utils.h"
+#include "visualization/image_mover.h"
 #include "cophenetic.h"
 #include "configuration_manager.h"
 #include "hierarchical_clustering.h"
-#include "image_mover.h"
 #include "random.h"
-#include "shape_vis.h"
-#include "utils.h"
+
 
 #include <algorithm>
 #include <cmath>

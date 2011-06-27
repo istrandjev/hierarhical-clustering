@@ -9,10 +9,10 @@ This page is aimed at helping you find the page you want from the wiki. The wiki
 = Use case scenarios =
 
 You can use this project as either:
- * End user who just wants demonstration of aglomerative clustering. In this case you will want to just have the code working and then all it takes is pass in different tests and experiment with the different options. You can refer to ""Experimenting with the algorithms"" page to see everything you will need to know in this scenario.
+ * End user who just wants demonstration of aglomerative clustering. In this case you will want to just have the code working and then all it takes is pass in different tests and experiment with the different options. You can refer to [ExperimentingWithTheAlgorithms Experimenting with the algorithms] page to see everything you will need to know in this scenario.
  * User who is interested not only in experimenting with the already provided algorithms but also introduce several extensions written by yourself. The code of the project is written in such a manner that it should be easily extensible. You can refer to ""Add logic of your own"" page to see how you can extend the code.
 
-However for both scenarios you will need to firstly set up the project on your machine. Refer to ""Setup the project"" page for details on how you can do that.
+However for both scenarios you will need to firstly set up the project on your machine. Refer to [SetupTheProject Setup the project] page for details on how you can do that.
 
 = Introduction to the field =
 

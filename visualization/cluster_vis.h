@@ -1,7 +1,7 @@
 #ifndef CLUSTER_VIS_H_
 #define CLUSTER_VIS_H_
 
-#include "../hierarchical_clustering.h"
+#include <hierarchical_clustering.h>
 
 class Shape;
 class FMeasureCalculator;

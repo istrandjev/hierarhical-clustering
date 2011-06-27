@@ -1,6 +1,6 @@
 #include "cluster_vis.h"
-#include "../cophenetic.h"
-#include "../f_measure_calculator.h"
+#include "cophenetic.h"
+#include "f_measure_calculator.h"
 #include "glfont.h"
 #include "shape_vis.h"
 #include <cmath>

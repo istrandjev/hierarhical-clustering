@@ -1,7 +1,7 @@
-#include "single_link.h"
-#include "cluster.h"
-#include "hierarchical_clustering.h"
-#include "constants.h"
+#include "../distances/single_link.h"
+#include "../cluster.h"
+#include "../hierarchical_clustering.h"
+#include "../constants.h"
 
 #include <set>
 using namespace std;

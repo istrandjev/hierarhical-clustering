@@ -1,4 +1,4 @@
-#include "distance.h"
+#include "../distances/distance.h"
 
 #include <cmath>
 

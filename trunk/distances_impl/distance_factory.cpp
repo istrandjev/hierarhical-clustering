@@ -1,6 +1,6 @@
-#include "distance_factory.h"
+#include "../distances/distance_factory.h"
 
-#include "all_distances.h"
+#include "../distances/all_distances.h"
 
 std::vector<const Distance*> DistanceFactory::distances;
 bool DistanceFactory::initialized = false;

@@ -1,8 +1,8 @@
 #ifndef CLUSTER_VIS_H_
 #define CLUSTER_VIS_H_
 
-#include "hierarchical_clustering.h"
-#include "cophenetic.h"
+#include "../hierarchical_clustering.h"
+#include "../cophenetic.h"
 
 class Shape;
 

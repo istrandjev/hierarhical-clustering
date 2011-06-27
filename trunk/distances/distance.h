@@ -1,7 +1,7 @@
 #ifndef DISTANCE_HPP
 #define DISTANCE_HPP
 
-#include "cluster.h"
+#include "../cluster.h"
 #include <string>
 
 class HierarchicalClustering;

@@ -1,6 +1,6 @@
 #ifndef CONFIGURATION_MANAGER_H
 #define CONFIGURATION_MANAGER_H
-#include "distance.h"
+#include "distances/distance.h"
 #include <string>
 
 class ConfigurationManager {

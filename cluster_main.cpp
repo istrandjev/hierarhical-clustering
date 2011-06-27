@@ -26,7 +26,8 @@ const ld epsylon = 1e-9;
 void doMain() {
 
 	ConfigurationManager cm;
-	cm.doConfiguration();
+	if(!cm.doConfiguration())
+		return;
 	const Distance* distance = cm.getDistance();
 	HierarchicalClustering hc(cm.getInputFileName(), distance);
 	hc.calculateHierarchy(distance);

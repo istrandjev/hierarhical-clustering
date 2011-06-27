@@ -19,6 +19,7 @@ public class SettingsConfigurator extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private static String distances[];
 	private static String zeroHandle[];
+    private static String run_id;
 	private String inputFile;
 	private String remapFile;
 	private String classifiedFile;
@@ -168,7 +169,8 @@ public class SettingsConfigurator extends JFrame {
 				return;
 			}
 			try {
-				settings = new FileWriter("settings.conf");
+				settings = new FileWriter("SettingsConfigurator\\settings.conf");
+                settings.write(run_id + "\n");
 				settings.write(inputFile + "\n");
 				settings.write(remapFile + "\n");
 				settings.write(distance + "\n");
@@ -224,8 +226,9 @@ public class SettingsConfigurator extends JFrame {
 		
 	}
 	public static void main(String[] args) {
-		distances = args[0].split(",");
-		zeroHandle = args[1].split(",");
+        run_id = args[0];
+		distances = args[1].split(",");
+		zeroHandle = args[2].split(",");
 		run(new SettingsConfigurator(), 500, 220);
 	}
 

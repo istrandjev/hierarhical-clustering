@@ -3,7 +3,7 @@
 
 = Introduction =
 
-This page is aimed at helping you find the page you want from the wiki. The wiki should help you get started with the code included in the project but also understand the basic terms and notions of the implemented algorithms. We will also provide a brief introduction to the problems the aglomerative clustering deals with.
+This page is aimed at helping you find the page you want from the wiki. The wiki should help you get started with the code included in the project but also understand the basic terms and notions of the implemented algorithms. We will also provide a brief introduction to the problems the [AglomerativeHierarchicalClustering aglomerative clustering] deals with.
 
 
 = Use case scenarios =
@@ -16,4 +16,4 @@ However for both scenarios you will need to firstly set up the project on your m
 
 = Introduction to the field =
 
-We have also planned to provide you with basic notion of the field of interest in this wiki. Maybe the best place to start is from ""Aglomerative hierarchical clustering" page. It should re-link to all notions and terms you will need to understand the field of interest.
+We have also planned to provide you with basic notion of the field of interest in this wiki. Maybe the best place to start is from [AglomerativeHierarchicalClustering Aglomerative hierarchical clustering] page. It should re-link to all notions and terms you will need to understand the field of interest.

@@ -4,20 +4,21 @@
 
 #include <cmath>
 #include <iostream> 
+#include <fstream>
 #include <sstream>
 
 using namespace std;
-ClusterVis::ClusterVis(const HierarchicalClustering* _hc) {
+ClusterVis::ClusterVis(const HierarchicalClustering* _hc, const string& remappedFileName) {
 	hc = _hc;
-	if (hc->numDimensions < 2 || hc->numDimensions > 3) {
+	loadPointsFromFile(remappedFileName);
+	if (numDimensions < 2 || numDimensions > 3) {
 		throw "Sorry, I can't visualize that!";
 	}
 	clusterLevel = 0;
 	radius = 1e100;
-	numPoints = hc->numPoints;
 	for (int i = 0; i < numPoints; ++i) {
 		for (int j = i + 1;j < numPoints; ++j) {
-			double temp = Dist(hc->points[i], hc->points[j], hc->numDimensions);
+			double temp = Dist(points[i], points[j], numDimensions);
 			if (temp < radius) {
 				radius = temp;
 			}
@@ -25,6 +26,26 @@ ClusterVis::ClusterVis(const HierarchicalClustering* _hc) {
 	}
 	radius *= 0.2;
 	radius =  max(radius, 0.01);
+}
+
+ClusterVis::~ClusterVis()
+{
+	for(int i = 0; i < numPoints; i++)
+		delete [] points[i];
+	delete [] points;
+}
+
+void ClusterVis::loadPointsFromFile(const string& remappedFileName)
+{
+	ifstream in(remappedFileName.c_str());
+	in >> numDimensions >> numPoints;
+	points = new double*[numPoints];
+	for(int i = 0; i < numPoints; i++)
+	{
+		points[i] = new double[numDimensions];
+		for(int j = 0; j < numDimensions; j++)
+			in >> points[i][j];
+	}
 }
 
 void ClusterVis::printText(const string& str)const
@@ -40,7 +61,7 @@ void ClusterVis::printText(const string& str)const
 	stringstream ss;
 	ss << str;
 	string line;
-	double y = 7.7;
+	float y = 7.7;
 
 	font.Begin();
 	glPushMatrix();
@@ -77,7 +98,7 @@ void ClusterVis::PrintStats(const CopheneticMeasure& copheneticMeasure) const
 void ClusterVis::Visualize(int set_type = -1) const {
 	for (int i = 0;i < numPoints; ++i) {
 		int temp_type = hc->allClusters[hc->clusterPoints[clusterLevel][i]]->getMinimalPointIndex();
-		const Shape& shape = GetShape(hc->points[i], temp_type);
+		const Shape& shape = GetShape(points[i], temp_type);
 
 	
 		shape.Display();
@@ -85,7 +106,7 @@ void ClusterVis::Visualize(int set_type = -1) const {
 }
 
 void ClusterVis::IncrementClusterLevel() {
-	if (clusterLevel < hc->numPoints - 1) {
+	if (clusterLevel < numPoints - 1) {
 		++clusterLevel;
 	}
 }
@@ -116,7 +137,7 @@ Shape ClusterVis::GetShape(double* pt, int type_code) const {
 	double x = pt[0];
 	double y = pt[1];
 	double z = 0.0;
-	if (hc->numDimensions == 3) {
+	if (numDimensions == 3) {
 		z = pt[2];
 	}
 	return Shape(x,y,z, radius, type_code);

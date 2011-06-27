@@ -1,7 +1,8 @@
 #include "cluster_vis.h"
-#include "shape_vis.h"
+#include "../cophenetic.h"
+#include "../f_measure_calculator.h"
 #include "glfont.h"
-
+#include "shape_vis.h"
 #include <cmath>
 #include <iostream> 
 #include <fstream>
@@ -71,27 +72,30 @@ void ClusterVis::printText(const string& str)const
 
 	while(getline(ss, line))
 	{
-		while(line.size() < 45)
+		while(line.size() < 45) {
 			line.push_back(' ');
-		font.TextOut(" " + line, 8, y, -20);
+		}
+		font.TextOut(" " + line, 8, (float)y, -20);
 		y -= 0.64;
 	}
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 }
 
-void ClusterVis::PrintStats(const CopheneticMeasure& copheneticMeasure) const
+void ClusterVis::PrintStats(const CopheneticMeasure& copheneticMeasure, const FMeasureCalculator* fmc) const
 {
 	stringstream text;
 	text << " Step: " << clusterLevel + 1 << "\n";
 	text.setf(ios::fixed,ios::floatfield);
 	text.precision(5);
-	if(clusterLevel > numPoints / 30 && clusterLevel > 1)
+	if(clusterLevel > numPoints / 30 && clusterLevel > 1) {
 		text << " cppc: " << copheneticMeasure.getCppc(*hc, clusterLevel) << "\n";
-	else
+	} else {
 		text << " cppc: " << " Not available" << "\n";
-
-	text << " F-measure: " << 0.89876554 << "\n";
+	}
+	if (fmc != NULL) {
+		text << " F-measure: " << fmc->getAverageFMeasure(clusterLevel) << "\n";
+	}
 	printText(text.str());
 }
 

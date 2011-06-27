@@ -19,7 +19,7 @@ When you launch the project you are presented with user friendly form that shoul
 The data input files provide the elements that are to be clustered. There are couple of data input files: one of them describes the "real" elements along with all their attributes and the other one is the so-called remapped input. In the remapped file the elements are expected to be represented with at most 3 continuous attributes. The remapped file data is used in the visualization - every element is represented with a point with coordinates taken from the remapped file. When you select the real data input file the remapped file is set by default to the same file to save double browsing in case of 2 or 3 dimensional input data. 
 
 Both files are text files and are in the same format:
-<num_dimensions> <num_points>
+`<`num_dimensions`>` `<`num_points`>`
 num_points lines of num_dimensions doubles describing the next element.
 
 For example if you wish to use as an input a unit square in 2D the input will be like:

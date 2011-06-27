@@ -1,5 +1,4 @@
 #summary Describes how can you use the project for conducting experiments.
-#labels Featured
 
 = Introduction =
 
@@ -46,9 +45,9 @@ When you check the checkbox additional button will appear in which you should pr
 <number_of_classes>
 for each class:
 <number_of_points>
-[line with indexes of the elements in the class]
+[line with space-separated indexes of the elements in the class]
 }}}
-The indexes of the elements should match the sequence of the elements given in the data input files. No index should appear in two classes. Thus if you have two clusters of 4 points, an example classification data file is the following:
+The indexes of the elements should match the sequence of the elements given in the data input files. Every element should be classified in exactly one class. Thus if you have two clusters of 4 points, an example classification data file is the following:
 {{{
 2
 4
@@ -56,3 +55,24 @@ The indexes of the elements should match the sequence of the elements given in t
 4
 2 4 6 8
 }}}
+
+= Visualization controls =
+After you have provided all the parameters needed for the algorithm to run you can press the button execute.
+
+When this happens the actual visualization of the algorithm is shown on the screen. Every element is presented with a point in the 3D space with points of same cluster represented with space figures of same shape and color and points of different cluster represented with different figures whenever possible (5000 different figures are provided).
+
+You can observe the state of the current step (the initial step is zeroth, i.e. the one in which no merging had happened) with various controls:
+ * You can rotate the image with the mouse
+ * You can move inwards (direction of z^+^) with 'q'
+ * You can move outwards (direction of z^-^) with 'a'
+ * You can rotate the image via 's' or 'w'
+ * You can enlarge the figures representing the points with 'v'
+ * You can make smaller the figures representing the points with 'b'
+
+Also:
+ * You can enlarge the figures representing the points with 'v'
+ * You can make smaller the figures representing the points with 'b'
+ * You can switch to the next step, if such exist, with 'z'
+ * You can switch back to the previous step, if such exist, with 'x'
+
+In each step there is a text field in which the values of all applicable quality measures are shown, together with the step number.

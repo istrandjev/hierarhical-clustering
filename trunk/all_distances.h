@@ -1,8 +1,8 @@
 #ifndef ALL_DISTANCES_H_
 #define ALL_DISTANCES_H_
 
-#include "nearest_neighbour.h"
-#include "furthest_neighbour.h"
+#include "single_link.h"
+#include "complete_link.h"
 #include "centroid_distance.h"
 #include "average_distance.h"
 

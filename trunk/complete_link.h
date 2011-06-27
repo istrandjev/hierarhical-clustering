@@ -6,7 +6,7 @@
 class HierarchicalClustering;
 class Cluster;
 
-class FurthestNeighbour: public Distance
+class CompleteLink: public Distance
 {
 public:
 	virtual double mergedDistance(const Cluster& leftFromCluster, const Cluster& rightFromCluster, 

@@ -134,17 +134,17 @@ void PixelPerfectGLFont::TextOut (string String, float x, float y, float z)
 
 	//Begin rendering quads
 	glBegin(GL_QUADS);
-	double size_factor = 0.04;
+	GLfloat size_factor = 0.04f;
 	//Loop through characters
 	int size =2;
-	double xx = x;
-	double yy = y;
+	GLfloat xx = x;
+	GLfloat yy = y;
 	for (int i = 0; i < Length; i++)
 	{
 		//Get pointer to glFont character
 		GLFONTCHAR *Char = &Font.Char[(int)String[i] - Font.IntStart];
-		double wid = (Char->width)*size_factor;
-		double hig = (Char->height)*size_factor;
+		GLfloat wid = (Char->width)*size_factor;
+		GLfloat hig = (Char->height)*size_factor;
 
 		//Specify vertices and texture coordinates
 		glTexCoord2f(Char->tx1, Char->ty2);

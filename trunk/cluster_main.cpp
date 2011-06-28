@@ -51,15 +51,19 @@ void doMain() {
 	ClusterVis cluster_vis(&hc, cm.getRemapFileName());
 	ImageMover image_mover;
 	CopheneticMeasure copheneticMeasure;
-	FMeasureCalculator* fmc = NULL;
+	FMeasureCalculator fmc;
 	if (cm.isSupervised()) {
-		fmc = new FMeasureCalculator(&hc, cm.getClassifiedFileName());
+		fmc.Init(&hc, cm.getClassifiedFileName());
 	}
 	int tp = 0;
 	while (true) {
 		GlVisualizer::clear_output();
 		image_mover.DoMove();
-		cluster_vis.PrintStats(copheneticMeasure, fmc);
+		if (cm.isSupervised()) {
+			cluster_vis.PrintStats(copheneticMeasure, &fmc);
+		} else {
+			cluster_vis.PrintStats(copheneticMeasure, NULL);
+		}
 		cluster_vis.Visualize(tp);
 		GlVisualizer::animation_pause(true);
 		if (GlVisualizer::keys['Z']) {
@@ -83,9 +87,6 @@ void doMain() {
 		if (GlVisualizer::keys['M']) {
 			tp = (tp+7)%8;
 		}
-	}
-	if (fmc != NULL) {
-		delete fmc;
 	}
 }
 

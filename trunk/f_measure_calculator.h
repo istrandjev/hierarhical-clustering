@@ -8,7 +8,8 @@
 
 class FMeasureCalculator {
 public:
-	FMeasureCalculator(const HierarchicalClustering* hirarchical_clustering, const std::string& classes_file);
+	FMeasureCalculator();
+	void Init(const HierarchicalClustering* hirarchical_clustering, const std::string& classes_file);
 	double getFMeasure(size_t level, size_t class_index) const;
 	double getAverageFMeasure(size_t level) const;
 private:

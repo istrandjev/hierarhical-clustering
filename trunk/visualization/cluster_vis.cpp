@@ -62,7 +62,7 @@ void ClusterVis::printText(const string& str)const
 	stringstream ss;
 	ss << str;
 	string line;
-	float y = 7.7;
+	float y = 7.7f;
 
 	font.Begin();
 	glPushMatrix();
@@ -76,7 +76,7 @@ void ClusterVis::printText(const string& str)const
 			line.push_back(' ');
 		}
 		font.TextOut(" " + line, 8, (float)y, -20);
-		y -= 0.64;
+		y -= 0.64f;
 	}
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();

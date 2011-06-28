@@ -2,10 +2,15 @@
 #include "hierarchical_clustering.h"
 #include <fstream>
 
-FMeasureCalculator::FMeasureCalculator(
-		const HierarchicalClustering* hirarchical_clustering,
-		const std::string& classes_file) : hc(hirarchical_clustering) {
+FMeasureCalculator::FMeasureCalculator() {
+	hc = NULL;
+}
+
+void FMeasureCalculator::Init(const HierarchicalClustering* hirarchical_clustering,
+		const std::string& classes_file) {
 	const int notset_value = -1;
+
+	hc = hirarchical_clustering;
 	actualClasses.resize(hc->allClusters.size(), notset_value);
 	std::ifstream in(classes_file.c_str());
 	if (!in) {

@@ -24,7 +24,7 @@ public class SettingsConfigurator extends JFrame {
 	private String remapFile;
 	private String classifiedFile;
 	private String distance;
-	private String zero;
+	private String unknownHandler;
 	private JButton input = new JButton("No file selected");
 	private JButton remap = new JButton("No file selected");
 	private JButton classified = new JButton("No file selected");
@@ -45,7 +45,7 @@ public class SettingsConfigurator extends JFrame {
 		jc.setSelectedIndex(1);
 
 		JComboBox jc2 = new JComboBox(zeroHandle);
-		jc2.addActionListener(new ZeroHandlingChooser());
+		jc2.addActionListener(new UnknownHandlingChooser());
 		jc2.setSelectedIndex(1);
 
 		JButton start = new JButton("execute");
@@ -67,7 +67,7 @@ public class SettingsConfigurator extends JFrame {
 		label3.setEditable(false);
 		
 		JTextField label4 = new JTextField();
-		label4.setText("Select zero handling:");
+		label4.setText("Select unknown value handling:");
 		label4.setEditable(false);
 		
 		JCheckBox cb = new JCheckBox("Supervised?", false);
@@ -103,9 +103,9 @@ public class SettingsConfigurator extends JFrame {
 		}
 	}
 
-	class ZeroHandlingChooser implements ActionListener {
+	class UnknownHandlingChooser implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			zero = ((JComboBox) e.getSource()).getSelectedItem().toString();
+			unknownHandler = ((JComboBox) e.getSource()).getSelectedItem().toString();
 		}
 	}
 
@@ -171,7 +171,7 @@ public class SettingsConfigurator extends JFrame {
 				settings.write(inputFile + "\n");
 				settings.write(remapFile + "\n");
 				settings.write(distance + "\n");
-				settings.write(zero + "\n");
+				settings.write(unknownHandler + "\n");
 				if (supervised) {
 					settings.write(classifiedFile + "\n");
 				}

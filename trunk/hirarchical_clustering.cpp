@@ -1,5 +1,7 @@
 #include "hierarchical_clustering.h"
 #include "distances/distance.h"
+#include "unknown_val/unknown_handler_factory.h"
+#include "unknown_val/unknown_values_handler.h"
 #include "cluster.h"
 #include "constants.h"
 
@@ -12,13 +14,10 @@ using namespace std;
 
 HierarchicalClustering::HierarchicalClustering(const string& dataFileName, const Distance* distance)
 {
-	ifstream in(dataFileName.c_str());
-	in >> numDimensions >> numPoints;
+	const UnkownHandler* unknownHandler = UnknownHandlerFactory::getUnkownHandler();
+	unknownHandler->readValues(dataFileName, points, numPoints, numDimensions);
 
 	constructElements();
-	for(int i = 0; i < numPoints; i++)
-		for(int j = 0; j < numDimensions; j++)
-			in >> points[i][j];
 
 	for(int i = 0; i < numPoints; i++)
 	{
@@ -45,10 +44,6 @@ HierarchicalClustering::HierarchicalClustering(const string& dataFileName, const
 
 void HierarchicalClustering::constructElements()
 {
-	points = new double* [numPoints];
-	for(int i = 0; i < numPoints; i++)
-		points[i] = new double[numDimensions];
-
 	dists = new double* [numPoints];
 	for(int i = 0; i < numPoints; i++)
 	{

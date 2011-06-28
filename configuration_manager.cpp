@@ -1,5 +1,6 @@
 #include "configuration_manager.h"
 #include "distances/distance_factory.h"
+#include "unknown_val/unknown_handler_factory.h"
 
 #include <fstream>
 #include <string>
@@ -44,10 +45,17 @@ bool ConfigurationManager::doConfiguration() {
 			distance_names += ",";
 		}
 	}
+
+	std::vector<const UnkownHandler*>  unknownHandlers = UnknownHandlerFactory::getAllUnkownHandlers();
+	std::string unknown_handler_names = "";
+	for (size_t index = 0; index < unknownHandlers.size();++index) {
+		unknown_handler_names += unknownHandlers[index]->getName();
+		if (index + 1 != unknownHandlers.size()) {
+			unknown_handler_names += ",";
+		}
+	}
 	std::string command = "java -jar SettingsConfigurator\\settings_configurator.jar";
-	// TODO(istrandjev): implement actual zero handler selection.
-	std::string zero_handlers = "a,b";
-	system((command + " " + run_id + " " + distance_names + " " + zero_handlers).c_str());
+	system((command + " " + run_id + " " + distance_names + " " + unknown_handler_names).c_str());
 	std::ifstream settings("SettingsConfigurator\\settings.conf");
 	if (!settings) {
 		throw new std::exception("Could not open the configuration file");
@@ -55,7 +63,7 @@ bool ConfigurationManager::doConfiguration() {
 	supervised = false;
 
 	std::string distance_name;
-	std::string zero_handler_name;
+	std::string unknown_handler_name;
 
 	std::string returned_run_id;
 	std::getline(settings, returned_run_id);
@@ -65,8 +73,9 @@ bool ConfigurationManager::doConfiguration() {
 	std::getline(settings, inputFileName);
 	std::getline(settings, remapFileName);
 	std::getline(settings, distance_name);
-	// TODO(istrandjev): use this value.
-	std::getline(settings, zero_handler_name);
+
+	std::getline(settings, unknown_handler_name);
+	UnknownHandlerFactory::setUnknownHandlerName(unknown_handler_name);
 
 	std::getline(settings, classifiedFileName);
 	if (classifiedFileName.size() > 0) {

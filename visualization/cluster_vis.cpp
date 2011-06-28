@@ -3,6 +3,8 @@
 #include "f_measure_calculator.h"
 #include "glfont.h"
 #include "shape_vis.h"
+#include "unknown_val/unknown_handler_factory.h"
+#include "unknown_val/unknown_values_handler.h"
 #include <cmath>
 #include <iostream> 
 #include <fstream>
@@ -38,15 +40,8 @@ ClusterVis::~ClusterVis()
 
 void ClusterVis::loadPointsFromFile(const string& remappedFileName)
 {
-	ifstream in(remappedFileName.c_str());
-	in >> numDimensions >> numPoints;
-	points = new double*[numPoints];
-	for(int i = 0; i < numPoints; i++)
-	{
-		points[i] = new double[numDimensions];
-		for(int j = 0; j < numDimensions; j++)
-			in >> points[i][j];
-	}
+	const UnkownHandler* unknownHandler = UnknownHandlerFactory::getUnkownHandler();
+	unknownHandler->readValues(remappedFileName, points, numPoints, numDimensions);
 }
 
 void ClusterVis::printText(const string& str)const

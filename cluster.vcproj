@@ -251,6 +251,30 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="unknown_val"
+				>
+				<File
+					RelativePath=".\unknown_val\average_unknown_handler.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\unknown_val\ignore_unkown_elements_handler.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\unknown_val\no_unknown_handler.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\unknown_val\unknown_handler_factory.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\unknown_val\unknown_values_handler.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -341,6 +365,30 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="unknown_val"
+				>
+				<File
+					RelativePath=".\unknown_val\average_unknown_handler.h"
+					>
+				</File>
+				<File
+					RelativePath=".\unknown_val\ignore_unknown_elements_handler.h"
+					>
+				</File>
+				<File
+					RelativePath=".\unknown_val\no_unknown_handler.h"
+					>
+				</File>
+				<File
+					RelativePath=".\unknown_val\unknown_handler_factory.h"
+					>
+				</File>
+				<File
+					RelativePath=".\unknown_val\unknown_values_handler.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -348,7 +396,7 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 			<File
-				RelativePath=".\classes.txt"
+				RelativePath=".\example_data\classes.txt"
 				>
 			</File>
 			<File
@@ -364,11 +412,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ivo.in"
+				RelativePath=".\example_data\ivo.in"
 				>
 			</File>
 			<File
-				RelativePath=".\lecture.txt"
+				RelativePath=".\example_data\lecture.txt"
 				>
 			</File>
 			<File
@@ -376,11 +424,27 @@
 				>
 			</File>
 			<File
-				RelativePath=".\test.txt"
+				RelativePath=".\example_data\test.txt"
 				>
 			</File>
 			<File
-				RelativePath=".\try.txt"
+				RelativePath=".\example_data\tetr_class.txt"
+				>
+			</File>
+			<File
+				RelativePath=".\example_data\tetrahedron.txt"
+				>
+			</File>
+			<File
+				RelativePath=".\example_data\tetrahedron_plane.txt"
+				>
+			</File>
+			<File
+				RelativePath=".\example_data\try.txt"
+				>
+			</File>
+			<File
+				RelativePath=".\example_data\unknown.txt"
 				>
 			</File>
 		</Filter>

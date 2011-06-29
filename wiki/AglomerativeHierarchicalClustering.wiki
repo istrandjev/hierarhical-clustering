@@ -81,4 +81,24 @@ cppc = sum,,i<j,,((d`[`i`]``[`j`]` - d_avg) `*` (cp`[`i`]``[`j`]` - cp_avg)) / s
 
 It can be proven that the value of this metric is in absolute value not greater than 1. The closer the values are to 1 the better the algorithm quality is considered to be.
 
-We have tried in our implementation to calculate the value of this quality measure on each step considering only the already linked couples of elements in the formula, but the results usefulness is controversial. 
+We have tried in our implementation to calculate the value of this quality measure on each step considering only the already linked couples of elements in the formula, but the results usefulness is controversial.
+
+== F Measure ==
+=== Basics === 
+F measure is a metric used to evaluate the quality of clustering when the actual class to each object belongs is known in advance. Therefore it is a supervised measure of clustering quality.
+=== Input ===
+The input for this measure are the objects to be clustered themselves and 
+the actual class to which each object belongs.
+=== Estimating the F measure ===
+Estimating the F measure for a hierarchical clustering consists in the following steps:
+ # for each cluster and each class estimate the F-measure of the class for this cluster
+ # for each class choose the maximum among it's F-measures and use it as the F measure of the class
+This measure can also be used when only a part of the hierarchy has been built. In that case simply use only the constructed clusters.
+=== Estimate the F measure for a class ===
+In order to estimate the F measure of a given class for a given cluster, one needs to use two other metrics the *recall* and the *precision* of the class for the given cluster.
+ * recall(Class, Cluster) - the recall of a class for a given cluster is defined as the proportion of objects of the given class assigned to the given cluster. I.e. if all the objects in the given class are |Class| and the number of objects assigned to Cluster that in fact are from Class is |CC|, than recall(Class, Cluster) = |CC|/|Class|
+ * precision(Class, Cluster) - the precision of a class for a given cluster is defined as the proportion of objects within Cluster that belong to Class. I.e. if we denote the number of objects in Cluster by |Cluster|  and the number of objects assigned to Cluster that in fact belong to Class by |CC| than  precision(Class, Cluster) = |CC|/|Cluster|
+Having in mind the above formulas the F measure of Class for Cluster is defined as the harmonic mean of the recall and precision of Class for Cluster:
+{{{
+FMeasure(Class,Cluster)=2*recall(Class,Cluster)*precision(Class,Cluster)/(recall(Class,Cluster)+precision(Class,Cluster))
+}}}

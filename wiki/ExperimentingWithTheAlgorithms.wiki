@@ -38,7 +38,7 @@ In the input form there is a drop down from which you can choose the distance me
 
 == Classification available switch ==
 
-If set this switch states that there is an additional information available for the input data presented, i.e. the classification of the input elements is known and the data is used for algorithm verification. This can be used by different algorithm like the ""F-metric measure" so that they will provide additional data during the execution of the algorithm. 
+If set this switch states that there is an additional information available for the input data presented, i.e. the classification of the input elements is known and the data is used for algorithm verification. This can be used by different algorithm like the [AglomerativeHierarchicalClustering#F_Measure F-metric measure] so that they will provide additional data during the execution of the algorithm. 
 
 When you check the checkbox additional button will appear in which you should provide the file containing the known classification data. This is text file and its format is the following:
 {{{

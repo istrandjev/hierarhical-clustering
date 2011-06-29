@@ -56,6 +56,21 @@ The indexes of the elements should match the sequence of the elements given in t
 1 3 5 7
 }}}
 
+== Unknown values handler ==
+There is a separate drop-down from which you can choose the way the unknown attribute values will be handled. One can always provide unknown value for some of the attributes of the elements in the input data files. An unknown value is represented with "?" rather than real number for the corresponding attribute. Example file containing 3 2D points, one of the attributes of which is unknown:
+
+{{{
+2 3
+0.0 0.0
+? 1.0
+1.0 1.0
+}}} 
+
+The algorithms to handle unknown values are described in detail [UnknownValuesHandling here]. However here we will list the implemented options along with all peculiarities of the implementation:
+ * no_unknown_handler - This handler will not allow any unknown values in neither the real input data file, nor the remapped input file. If unknown value is provided exception is thrown.
+ * ignore_unknown_handler - This handler ignores all elements containing unknown attributes. This, however, reduces the number of elements to process and visualize. One have to take care when using this handler - if the remapped data file and the real one have difference in the elements with unknown elements the remapping will result in unpredictable results.
+ * average_unknown_handler - This handler uses the average of all known values of certain attribute as substitute of the unknown values. Thus all attributes become real numbers and the handling can continues as if there were no unknown values. If for certain attribute no value is known a default average of zero is assigned to it.
+
 = Visualization controls =
 After you have provided all the parameters needed for the algorithm to run you can press the button execute.
 

@@ -1,6 +1,12 @@
 #summary description of different techniques to handle unknown values
 
 = Introduction =
-
 This page describes the different algorithms to handle unknown values in the input.
-
+= Unknown values =
+It is not  rare case when an object's property has no value for a given property either because it has no such property or because we have no data for it. Therefor our clustering algorithm should be able to handle such cases and still produce some somewhat reasonable clustering. 
+We have implemented two basic algorithms for unknown values: *ignore unknown values* and *average value*. In addition there is another option for handling unknown values called *no unknown values*. In this case if there is an unknown value, execution will terminate with an exception.
+More detailed description of these algorithms can be found below.
+== Ignore unknown values ==
+In this case if an object has an unknown property value, we simply ignore it. Thus the input size will be reduced and only objects with all property values known will be processed.
+== Average value ==
+In this case if we have an unknown value for a given property we will assign to it the average(arithmetic mean) of all the known values for this property. In case there is no know value for this property, zero will be used.

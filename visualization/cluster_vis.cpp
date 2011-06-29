@@ -70,7 +70,7 @@ void ClusterVis::printText(const string& str)const
 		while(line.size() < 45) {
 			line.push_back(' ');
 		}
-		font.TextOut(" " + line, 8, (float)y, -20);
+		font.TextOut(" " + line, 9.2, (float)y, -20);
 		y -= 0.64f;
 	}
 	glDisable(GL_TEXTURE_2D);

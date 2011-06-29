@@ -28,7 +28,7 @@ const ld epsylon = 1e-9;
 void intiailizeGraphics() {
 	// Create Our OpenGL Window
 	GlVisualizer::Initialize();
-	if (!GlVisualizer::CreateGLWindow(L"Hierarchical clustering",1280,800,16))
+	if (!GlVisualizer::CreateGLWindow(L"Hierarchical clustering",1280,730,16))
 	{
 		exit(0);							// Quit If Window Was Not Created
 	}
